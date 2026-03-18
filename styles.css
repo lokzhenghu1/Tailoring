@@ -1,261 +1,334 @@
-/* Reset and base styles */
+/* ===================================
+   RESET AND BASE STYLES
+   =================================== */
+
+/* Universal selector: Resets default margins and padding for all elements
+   box-sizing: border-box ensures padding and borders are included in element width/height */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body: Sets default font, line spacing, text color, and background for entire page */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;  /* Default font family */
+    line-height: 1.6;                  /* Spacing between lines for readability */
+    color: #333;                       /* Dark gray text color */
+    background-color: #f4f4f4;         /* Light gray background */
 }
 
+/* Container: Centers content and limits maximum width for better readability on large screens */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1200px;   /* Maximum width of content */
+    margin: 0 auto;      /* Centers the container horizontally */
+    padding: 0 20px;     /* Adds horizontal padding on sides */
 }
 
-/* Header styles */
+/* ===================================
+   HEADER STYLES
+   =================================== */
+
+/* Header: Fixed navigation bar that stays at top when scrolling */
 header {
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0.1);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
+    background-color: #fff;                    /* White background */
+    box-shadow: 0 2px 5px rgba(0,0,0.1);      /* Subtle shadow for depth */
+    position: fixed;                           /* Stays fixed at top when scrolling */
+    width: 100%;                               /* Full width of viewport */
+    top: 0;                                    /* Positioned at top of page */
+    z-index: 1000;                            /* Ensures header stays above other content */
 }
 
+/* Navigation: Uses flexbox to arrange logo and links horizontally */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+    display: flex;                             /* Enables flexbox layout */
+    justify-content: space-between;            /* Pushes logo left, links right */
+    align-items: center;                       /* Vertically centers items */
+    padding: 20px;                             /* Space around navigation content */
 }
 
+/* Logo: Brand name styling */
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+    font-size: 24px;      /* Larger text for visibility */
+    font-weight: bold;    /* Bold text for emphasis */
+    color: #333;          /* Dark gray color */
 }
 
+/* Navigation links: Horizontal list of menu items */
 .nav-links {
-    display: flex;
-    list-style: none;
+    display: flex;        /* Arranges list items horizontally */
+    list-style: none;     /* Removes bullet points */
 }
 
+/* Navigation list items: Spacing between menu links */
 .nav-links li {
-    margin-left: 50px;
+    margin-left: 50px;    /* Space between each navigation link */
 }
 
+/* Navigation link styling */
 .nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    text-decoration: none;           /* Removes underline from links */
+    color: #333;                     /* Dark gray text */
+    font-weight: 500;                /* Medium weight font */
+    transition: color 0.3s ease;     /* Smooth color change on hover */
 }
 
+/* Navigation link hover and active states: Changes color on hover or when active */
 .nav-links a:hover,
 .nav-links a.active {
-    color: #007bff;
+    color: #007bff;    /* Blue color for hover and active link */
 }
 
-/* Main content */
+/* ===================================
+   MAIN CONTENT
+   =================================== */
+
+/* Main: Adds top margin to prevent content from hiding under fixed header */
 main {
-    margin-top: 80px;
+    margin-top: 80px;    /* Offset for fixed header height */
 }
 
-/* Hero section */
+/* ===================================
+   HERO SECTION
+   =================================== */
+
+/* Hero: Large banner section with background image */
 .hero {
-    background: url('images/hero-bg.jpg') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 100px 0;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    background: url('images/hero-bg.jpg') no-repeat center center/cover;  /* Background image, centered and covering */
+    color: white;                      /* White text for contrast */
+    text-align: center;                /* Centers text horizontally */
+    padding: 100px 0;                  /* Vertical padding top and bottom */
+    min-height: 80vh;                  /* Minimum height of 80% of viewport height */
+    display: flex;                     /* Enables flexbox for centering */
+    align-items: center;               /* Centers content vertically */
+    justify-content: center;           /* Centers content horizontally */
+    position: relative;                /* Allows positioning of child elements */
 }
 
+/* Hero heading: Large title text */
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 3rem;         /* Large font size (48px) */
+    margin-bottom: 20px;     /* Space below heading */
 }
 
+/* Hero paragraph: Subtitle text */
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    font-size: 1.2rem;       /* Slightly larger than normal text */
+    margin-bottom: 30px;     /* Space below paragraph */
 }
 
+/* Dynamic button: Interactive button with hover effects */
 #dynamicBtn {
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: #ff6b6b;           /* Coral red background */
+    color: white;                        /* White text */
+    border: none;                        /* Removes default button border */
+    padding: 15px 30px;                  /* Internal spacing (vertical, horizontal) */
+    font-size: 1.1rem;                   /* Slightly larger text */
+    border-radius: 50px;                 /* Rounded pill shape */
+    cursor: pointer;                     /* Shows hand cursor on hover */
+    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth animations */
 }
 
+/* Dynamic button hover: Grows and darkens when hovered */
 #dynamicBtn:hover {
-    background-color: #ff5252;
-    transform: scale(1.05);
+    background-color: #ff5252;    /* Darker red on hover */
+    transform: scale(1.05);       /* Slightly increases size (105%) */
 }
 
-/* Section styles */
+/* ===================================
+   SECTION STYLES
+   =================================== */
+
+/* All sections: Consistent vertical padding */
 section {
-    padding: 80px 0;
+    padding: 80px 0;    /* Top and bottom padding for spacing */
 }
 
+/* About section: White background */
 .about {
     background-color: #fff;
 }
 
+/* Process section: Light gray background for contrast */
 .process {
     background-color: #f8f9fa;
 }
 
+/* Pricing section: White background */
 .pricing {
     background-color: #fff;
 }
 
+/* Contact section: Light gray background */
 .contact {
     background-color: #f8f9fa;
 }
 
+/* Section headings: Centered, large text for all h2 elements */
 h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: #333;
+    text-align: center;      /* Centers heading text */
+    margin-bottom: 40px;     /* Space below heading */
+    font-size: 2.5rem;       /* Large heading size (40px) */
+    color: #333;             /* Dark gray color */
 }
 
-/* Services grid */
+/* ===================================
+   SERVICES/CARDS GRID LAYOUT
+   =================================== */
+
+/* Services grid: Responsive grid that adjusts to screen size */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    display: grid;                                              /* Enables CSS Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Auto-creates columns, min 300px wide */
+    gap: 30px;                                                  /* Space between grid items */
 }
 
+/* Service card: Individual card with shadow and hover effect */
 .service-card {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    background-color: #fff;                 /* White background */
+    padding: 30px;                          /* Internal spacing */
+    border-radius: 10px;                    /* Rounded corners */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease;        /* Smooth animation on hover */
 }
 
+/* Service card hover: Lifts card up when hovered */
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px);    /* Moves card up by 10px */
 }
 
+/* Service card heading: Blue colored heading inside cards */
 .service-card h3 {
-    color: #007bff;
-    margin-bottom: 15px;
+    color: #007bff;          /* Blue color for emphasis */
+    margin-bottom: 15px;     /* Space below heading */
 }
 
-/* Contact form */
+/* ===================================
+   CONTACT FORM
+   =================================== */
+
+/* Contact form: Centered form with grid layout for inputs */
 #contactForm {
-    max-width: 600px;
-    margin: 0 auto;
-    display: grid;
-    gap: 20px;
+    max-width: 600px;     /* Limits form width for better readability */
+    margin: 0 auto;       /* Centers form horizontally */
+    display: grid;        /* Uses grid layout for form fields */
+    gap: 20px;            /* Space between form fields */
 }
 
+/* Input and textarea fields: Consistent styling for all form inputs */
 #contactForm input,
 #contactForm textarea {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 15px;                  /* Internal spacing */
+    border: 1px solid #ddd;         /* Light gray border */
+    border-radius: 5px;             /* Slightly rounded corners */
+    font-size: 1rem;                /* Standard font size */
 }
 
+/* Textarea: Allows vertical resizing only */
 #contactForm textarea {
-    min-height: 150px;
-    resize: vertical;
+    min-height: 150px;    /* Minimum height for message area */
+    resize: vertical;     /* Only allows vertical resizing (not horizontal) */
 }
 
+/* Submit button: Blue button with hover effect */
 #contactForm button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 15px;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-color: #007bff;              /* Blue background */
+    color: white;                           /* White text */
+    border: none;                           /* Removes default border */
+    padding: 15px;                          /* Internal spacing */
+    font-size: 1.1rem;                      /* Slightly larger text */
+    border-radius: 5px;                     /* Rounded corners */
+    cursor: pointer;                        /* Shows hand cursor */
+    transition: background-color 0.3s ease; /* Smooth color change */
 }
 
+/* Submit button hover: Darker blue on hover */
 #contactForm button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3;    /* Darker blue */
 }
 
+/* Form message: Initially hidden, shows success or error messages */
 #formMessage {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    display: none;
+    margin-top: 20px;      /* Space above message */
+    padding: 10px;         /* Internal spacing */
+    border-radius: 5px;    /* Rounded corners */
+    text-align: center;    /* Centers text */
+    display: none;         /* Hidden by default (shown via JavaScript) */
 }
 
+/* Success message: Green background for successful form submission */
 .success {
-    background-color: #d4edda;
-    color: #155724;
-    display: block;
+    background-color: #d4edda;    /* Light green background */
+    color: #155724;               /* Dark green text */
+    display: block;               /* Makes element visible */
 }
 
+/* Error message: Red background for form errors */
 .error {
-    background-color: #f8d7da;
-    color: #721c24;
-    display: block;
+    background-color: #f8d7da;    /* Light red background */
+    color: #721c24;               /* Dark red text */
+    display: block;               /* Makes element visible */
 }
 
-/* Footer */
+/* ===================================
+   FOOTER
+   =================================== */
+
+/* Footer: Dark footer at bottom of page */
 footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 30px 0;
+    background-color: #333;    /* Dark gray background */
+    color: white;              /* White text */
+    text-align: center;        /* Centers text */
+    padding: 30px 0;           /* Vertical padding */
 }
 
-/* Responsive design */
+/* ===================================
+   RESPONSIVE DESIGN
+   Media query for tablets and mobile devices
+   =================================== */
+
+/* Applies styles when screen width is 768px or less (tablets and phones) */
 @media (max-width: 768px) {
+    /* Initially hides navigation links on mobile (can be toggled with menu button) */
     .nav-links {
         display: none;
     }
 
+    /* Reduces hero heading size for smaller screens */
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2rem;    /* Smaller than desktop (3rem) */
     }
 
+    /* Reduces hero paragraph size for smaller screens */
     .hero p {
-        font-size: 1rem;
+        font-size: 1rem;    /* Smaller than desktop (1.2rem) */
     }
 
+    /* Reduces section heading size for smaller screens */
     h2 {
-        font-size: 2rem;
+        font-size: 2rem;    /* Smaller than desktop (2.5rem) */
     }
-    
+
+    /* Changes navigation to vertical layout on mobile */
     nav {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column;    /* Stacks items vertically */
+        text-align: center;        /* Centers content */
     }
-    
+
+    /* Adds space below logo when stacked vertically */
     .logo {
         margin-bottom: 15px;
     }
-    
+
+    /* Shows navigation links in wrapped horizontal layout */
     .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: flex;              /* Enables flexbox */
+        flex-wrap: wrap;            /* Allows items to wrap to next line */
+        justify-content: center;    /* Centers items */
     }
-    
+
+    /* Adjusts spacing between navigation items on mobile */
     .nav-links li {
-        margin: 5px 20px;
+        margin: 5px 20px;    /* Smaller vertical margin than desktop */
     }
 }
