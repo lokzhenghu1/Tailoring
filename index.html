@@ -1,115 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Character encoding for proper text display -->
     <meta charset="UTF-8">
-
-    <!-- Ensures proper rendering and touch zooming on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Tailoring London</title>
 
-    <!-- Page title shown in browser tab -->
-    <title>Dynamic Website</title>
+    <!-- Google Fonts: Open Sans for professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Link to external CSS stylesheet for styling -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- HEADER SECTION: Fixed navigation bar at the top of the page -->
-    <header>
-        <nav>
-            <!-- Website logo/brand name -->
-            <div class="logo">DynamicSite</div>
+    <!-- Fixed Header Navigation -->
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <!-- Hamburger Menu Icon - Left Side -->
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
 
-            <!-- Navigation menu with links to different sections -->
-            <ul class="nav-links">
-                <!-- 'active' class highlights the current page -->
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+                <div class="logo">Bespoke Tailoring</div>
+
+                <!-- Desktop Navigation Menu -->
+                <ul class="nav-links desktop-nav">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- MAIN CONTENT: Contains all the page sections -->
-    <main>
-        <!-- HOME SECTION: Hero banner with main call-to-action -->
-        <section id="home" class="hero">
-            <div class="container">
-                <h1>Welcome to Our Dynamic Website</h1>
-                <p>This is a sample website demonstrating dynamic functionality with JavaScript.</p>
+    <!-- Side Navigation Panel (Mobile) -->
+    <div class="side-nav" id="sideNav">
+        <div class="side-nav-content">
+            <div class="side-nav-header">
+                <h3>Menu</h3>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+            <ul class="side-nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
 
-                <!-- Interactive button that triggers background color change (handled by JavaScript) -->
-                <button id="dynamicBtn">Click for Magic</button>
+    <!-- Overlay for side navigation -->
+    <div class="overlay" id="overlay"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Exceptional Bespoke Tailoring</h1>
+                <p>Crafting distinguished garments with precision and elegance</p>
+                <a href="#contact" class="cta-button">Book Consultation</a>
             </div>
         </section>
 
-        <!-- ABOUT SECTION: Information about the website/company -->
+        <!-- About Section - Two Column Layout -->
         <section id="about" class="about">
             <div class="container">
-                <h2>About Us</h2>
-                <p>This section demonstrates dynamic content loading.</p>
-
-                <!-- Empty div that will be populated with dynamic content by JavaScript when button is clicked -->
-                <div id="dynamicContent"></div>
+                <div class="two-column">
+                    <div class="column">
+                        <h2>Our Craft</h2>
+                        <p>With decades of experience in bespoke tailoring, we create garments that reflect your individual style and personality. Each piece is meticulously crafted using traditional techniques and the finest materials.</p>
+                        <p>Our London showroom offers a refined setting for your consultation, where we guide you through fabric selection, design details, and perfect fitting.</p>
+                    </div>
+                    <div class="column">
+                        <div class="image-placeholder">
+                            <p>Showroom Image</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- PROCESS SECTION: Displays the work process steps -->
-        <!-- Content is dynamically generated by JavaScript (see displayProcess function in script.js) -->
+        <!-- Services Section - Three Column Grid -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="three-column">
+                    <div class="service-card">
+                        <h3>Bespoke Suits</h3>
+                        <p>Entirely handcrafted suits tailored to your exact measurements and preferences. Choose from our curated selection of premium fabrics.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Shirts & Accessories</h3>
+                        <p>Custom shirts, ties, and accessories designed to complement your wardrobe perfectly. Attention to every detail.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Alterations</h3>
+                        <p>Expert alterations and repairs to ensure your garments maintain their perfect fit and appearance over time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
         <section id="process" class="process">
             <div class="container">
-                <h2>Our Process</h2>
-                <p>This section outlines our work process.</p>
-                <!-- Process cards (Discovery, Planning, Execution, Review) will be added here by JavaScript -->
+                <h2>The Process</h2>
+                <div class="process-content">
+                    <div class="process-step">
+                        <h3>01. Consultation</h3>
+                        <p>Personal meeting to discuss your requirements and style preferences</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>02. Measurement</h3>
+                        <p>Precise measurements taken for a perfect fit</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>03. Creation</h3>
+                        <p>Handcrafted by skilled artisans using time-honored techniques</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>04. Fitting</h3>
+                        <p>Final adjustments to ensure impeccable fit</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- PRICING SECTION: Shows pricing plans -->
-        <!-- Content is dynamically generated by JavaScript (see displayPricing function in script.js) -->
-        <section id="pricing" class="pricing">
-            <div class="container">
-                <h2>Pricing Plans</h2>
-                <p>This section details our pricing options.</p>
-                <!-- Pricing cards (Basic, Professional, Enterprise) will be added here by JavaScript -->
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION: Contact form for user inquiries -->
+        <!-- Contact Section -->
         <section id="contact" class="contact">
             <div class="container">
-                <h2>Contact Us</h2>
-
-                <!-- Contact form with validation (handled by handleFormSubmit function in script.js) -->
-                <form id="contactForm">
-                    <!-- Name input field - 'required' attribute ensures field must be filled -->
-                    <input type="text" id="name" placeholder="Your Name" required>
-
-                    <!-- Email input field with built-in email format validation -->
-                    <input type="email" id="email" placeholder="Your Email" required>
-
-                    <!-- Message textarea for longer text input -->
-                    <textarea id="message" placeholder="Your Message" required></textarea>
-
-                    <!-- Submit button triggers form submission event -->
-                    <button type="submit">Send Message</button>
-                </form>
-
-                <!-- Empty div for displaying form submission messages (success/error) -->
-                <div id="formMessage"></div>
+                <h2>Visit Our Showroom</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>London Showroom</h3>
+                        <p>123 Savile Row<br>
+                        London, W1S 3PJ<br>
+                        United Kingdom</p>
+                        <p><strong>Phone:</strong> +44 20 1234 5678<br>
+                        <strong>Email:</strong> info@bespoketailoring.com</p>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Book a Consultation</h3>
+                        <form id="contactForm">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <input type="tel" name="phone" placeholder="Phone Number">
+                            <textarea name="message" placeholder="Message" rows="4"></textarea>
+                            <button type="submit" class="cta-button">Send Enquiry</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER SECTION: Copyright information -->
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Dynamic Website. All rights reserved.</p>
+            <p>&copy; 2026 Bespoke Tailoring London. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Link to external JavaScript file for interactivity and dynamic functionality -->
     <script src="script.js"></script>
 </body>
 </html>
