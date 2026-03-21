@@ -2,333 +2,580 @@
    RESET AND BASE STYLES
    =================================== */
 
-/* Universal selector: Resets default margins and padding for all elements
-   box-sizing: border-box ensures padding and borders are included in element width/height */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body: Sets default font, line spacing, text color, and background for entire page */
 body {
-    font-family: 'Arial', sans-serif;  /* Default font family */
-    line-height: 1.6;                  /* Spacing between lines for readability */
-    color: #333;                       /* Dark gray text color */
-    background-color: #f4f4f4;         /* Light gray background */
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
 }
 
-/* Container: Centers content and limits maximum width for better readability on large screens */
 .container {
-    max-width: 1200px;   /* Maximum width of content */
-    margin: 0 auto;      /* Centers the container horizontally */
-    padding: 0 20px;     /* Adds horizontal padding on sides */
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* ===================================
    HEADER STYLES
    =================================== */
 
-/* Header: Fixed navigation bar that stays at top when scrolling */
-header {
-    background-color: #fff;                    /* White background */
-    box-shadow: 0 2px 5px rgba(0,0,0.1);      /* Subtle shadow for depth */
-    position: fixed;                           /* Stays fixed at top when scrolling */
-    width: 100%;                               /* Full width of viewport */
-    top: 0;                                    /* Positioned at top of page */
-    z-index: 1000;                            /* Ensures header stays above other content */
+#main-header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 0;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Navigation: Uses flexbox to arrange logo and links horizontally */
+#main-header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
 nav {
-    display: flex;                             /* Enables flexbox layout */
-    justify-content: space-between;            /* Pushes logo left, links right */
-    align-items: center;                       /* Vertically centers items */
-    padding: 20px;                             /* Space around navigation content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    position: relative;
 }
 
-/* Logo: Brand name styling */
 .logo {
-    font-size: 24px;      /* Larger text for visibility */
-    font-weight: bold;    /* Bold text for emphasis */
-    color: #333;          /* Dark gray color */
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-/* Navigation links: Horizontal list of menu items */
-.nav-links {
-    display: flex;        /* Arranges list items horizontally */
-    list-style: none;     /* Removes bullet points */
+/* Mobile Menu Toggle (Hamburger) - Left Side */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 5px;
+    position: absolute;
+    left: 0;
 }
 
-/* Navigation list items: Spacing between menu links */
-.nav-links li {
-    margin-left: 50px;    /* Space between each navigation link */
+.mobile-menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
 }
 
-/* Navigation link styling */
-.nav-links a {
-    text-decoration: none;           /* Removes underline from links */
-    color: #333;                     /* Dark gray text */
-    font-weight: 500;                /* Medium weight font */
-    transition: color 0.3s ease;     /* Smooth color change on hover */
+/* Desktop Navigation Links */
+.desktop-nav {
+    display: flex;
+    list-style: none;
+    gap: 45px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
 }
 
-/* Navigation link hover and active states: Changes color on hover or when active */
-.nav-links a:hover,
-.nav-links a.active {
-    color: #007bff;    /* Blue color for hover and active link */
+.desktop-nav li {
+    position: relative;
+}
+
+.desktop-nav a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    display: block;
+    padding: 5px 0;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+    color: #fb8e28;
+}
+
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fb8e28;
+    transition: width 0.3s ease;
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a.active::after {
+    width: 100%;
 }
 
 /* ===================================
-   MAIN CONTENT
+   SIDE NAVIGATION (Mobile)
    =================================== */
 
-/* Main: Adds top margin to prevent content from hiding under fixed header */
-main {
-    margin-top: 80px;    /* Offset for fixed header height */
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 320px;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 2000;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+}
+
+.side-nav.active {
+    left: 0;
+}
+
+.side-nav-content {
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.side-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.side-nav-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #fb8e28;
+}
+
+.side-nav-links {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.side-nav-links li {
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.side-nav-links a {
+    display: block;
+    padding: 18px 30px;
+    color: #666;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.side-nav-links a:hover {
+    background-color: #f9f9f9;
+    color: #fb8e28;
+    padding-left: 40px;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1500;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ===================================
    HERO SECTION
    =================================== */
 
-/* Hero: Large banner section with background image */
+main {
+    margin-top: 80px;
+}
+
 .hero {
-    background: url('images/hero-bg.jpg') no-repeat center center/cover;  /* Background image, centered and covering */
-    color: white;                      /* White text for contrast */
-    text-align: center;                /* Centers text horizontally */
-    padding: 100px 0;                  /* Vertical padding top and bottom */
-    min-height: 80vh;                  /* Minimum height of 80% of viewport height */
-    display: flex;                     /* Enables flexbox for centering */
-    align-items: center;               /* Centers content vertically */
-    justify-content: center;           /* Centers content horizontally */
-    position: relative;                /* Allows positioning of child elements */
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/pricing-hero.webp') no-repeat center center/cover;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 100px 20px;
 }
 
-/* Hero heading: Large title text */
-.hero h1 {
-    font-size: 3rem;         /* Large font size (48px) */
-    margin-bottom: 20px;     /* Space below heading */
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
 }
 
-/* Hero paragraph: Subtitle text */
-.hero p {
-    font-size: 1.2rem;       /* Slightly larger than normal text */
-    margin-bottom: 30px;     /* Space below paragraph */
+.hero-content p {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    opacity: 0.95;
 }
 
-/* Dynamic button: Interactive button with hover effects */
-#dynamicBtn {
-    background-color: #ff6b6b;           /* Coral red background */
-    color: white;                        /* White text */
-    border: none;                        /* Removes default button border */
-    padding: 15px 30px;                  /* Internal spacing (vertical, horizontal) */
-    font-size: 1.1rem;                   /* Slightly larger text */
-    border-radius: 50px;                 /* Rounded pill shape */
-    cursor: pointer;                     /* Shows hand cursor on hover */
-    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth animations */
+.cta-button {
+    display: inline-block;
+    background-color: #fb8e28;
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-/* Dynamic button hover: Grows and darkens when hovered */
-#dynamicBtn:hover {
-    background-color: #ff5252;    /* Darker red on hover */
-    transform: scale(1.05);       /* Slightly increases size (105%) */
+.cta-button:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
 }
 
 /* ===================================
    SECTION STYLES
    =================================== */
 
-/* All sections: Consistent vertical padding */
 section {
-    padding: 80px 0;    /* Top and bottom padding for spacing */
+    padding: 80px 0;
 }
 
-/* About section: White background */
-.about {
-    background-color: #fff;
-}
-
-/* Process section: Light gray background for contrast */
-.process {
-    background-color: #f8f9fa;
-}
-
-/* Pricing section: White background */
-.pricing {
-    background-color: #fff;
-}
-
-/* Contact section: Light gray background */
-.contact {
-    background-color: #f8f9fa;
-}
-
-/* Section headings: Centered, large text for all h2 elements */
 h2 {
-    text-align: center;      /* Centers heading text */
-    margin-bottom: 40px;     /* Space below heading */
-    font-size: 2.5rem;       /* Large heading size (40px) */
-    color: #333;             /* Dark gray color */
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #333;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fb8e28;
 }
 
 /* ===================================
-   SERVICES/CARDS GRID LAYOUT
+   ABOUT SECTION - TWO COLUMN LAYOUT
    =================================== */
 
-/* Services grid: Responsive grid that adjusts to screen size */
-.services-grid {
-    display: grid;                                              /* Enables CSS Grid layout */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Auto-creates columns, min 300px wide */
-    gap: 30px;                                                  /* Space between grid items */
+.about {
+    background-color: #f9f9f9;
 }
 
-/* Service card: Individual card with shadow and hover effect */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.column p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.column h2 {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.image-placeholder {
+    background-color: #e0e0e0;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: #999;
+}
+
+/* ===================================
+   SERVICES SECTION - THREE COLUMN GRID
+   =================================== */
+
+.services {
+    background-color: #fff;
+}
+
+.three-column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
 .service-card {
-    background-color: #fff;                 /* White background */
-    padding: 30px;                          /* Internal spacing */
-    border-radius: 10px;                    /* Rounded corners */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s ease;        /* Smooth animation on hover */
+    padding: 40px 30px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Service card hover: Lifts card up when hovered */
 .service-card:hover {
-    transform: translateY(-10px);    /* Moves card up by 10px */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Service card heading: Blue colored heading inside cards */
 .service-card h3 {
-    color: #007bff;          /* Blue color for emphasis */
-    margin-bottom: 15px;     /* Space below heading */
+    margin-bottom: 20px;
+}
+
+.service-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #666;
 }
 
 /* ===================================
-   CONTACT FORM
+   PROCESS SECTION
    =================================== */
 
-/* Contact form: Centered form with grid layout for inputs */
-#contactForm {
-    max-width: 600px;     /* Limits form width for better readability */
-    margin: 0 auto;       /* Centers form horizontally */
-    display: grid;        /* Uses grid layout for form fields */
-    gap: 20px;            /* Space between form fields */
+.process {
+    background-color: #f9f9f9;
 }
 
-/* Input and textarea fields: Consistent styling for all form inputs */
-#contactForm input,
-#contactForm textarea {
-    padding: 15px;                  /* Internal spacing */
-    border: 1px solid #ddd;         /* Light gray border */
-    border-radius: 5px;             /* Slightly rounded corners */
-    font-size: 1rem;                /* Standard font size */
+.process-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 20px;
 }
 
-/* Textarea: Allows vertical resizing only */
-#contactForm textarea {
-    min-height: 150px;    /* Minimum height for message area */
-    resize: vertical;     /* Only allows vertical resizing (not horizontal) */
+.process-step {
+    text-align: center;
+    padding: 20px;
 }
 
-/* Submit button: Blue button with hover effect */
-#contactForm button {
-    background-color: #007bff;              /* Blue background */
-    color: white;                           /* White text */
-    border: none;                           /* Removes default border */
-    padding: 15px;                          /* Internal spacing */
-    font-size: 1.1rem;                      /* Slightly larger text */
-    border-radius: 5px;                     /* Rounded corners */
-    cursor: pointer;                        /* Shows hand cursor */
-    transition: background-color 0.3s ease; /* Smooth color change */
+.process-step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #fb8e28;
 }
 
-/* Submit button hover: Darker blue on hover */
-#contactForm button:hover {
-    background-color: #0056b3;    /* Darker blue */
+.process-step p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
 }
 
-/* Form message: Initially hidden, shows success or error messages */
-#formMessage {
-    margin-top: 20px;      /* Space above message */
-    padding: 10px;         /* Internal spacing */
-    border-radius: 5px;    /* Rounded corners */
-    text-align: center;    /* Centers text */
-    display: none;         /* Hidden by default (shown via JavaScript) */
+/* ===================================
+   CONTACT SECTION
+   =================================== */
+
+.contact {
+    background-color: #fff;
 }
 
-/* Success message: Green background for successful form submission */
-.success {
-    background-color: #d4edda;    /* Light green background */
-    color: #155724;               /* Dark green text */
-    display: block;               /* Makes element visible */
+.contact-content {
+    max-width: 600px;
+    margin: 20px auto 0;
 }
 
-/* Error message: Red background for form errors */
-.error {
-    background-color: #f8d7da;    /* Light red background */
-    color: #721c24;               /* Dark red text */
-    display: block;               /* Makes element visible */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #fb8e28;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    width: fit-content;
 }
 
 /* ===================================
    FOOTER
    =================================== */
 
-/* Footer: Dark footer at bottom of page */
 footer {
-    background-color: #333;    /* Dark gray background */
-    color: white;              /* White text */
-    text-align: center;        /* Centers text */
-    padding: 30px 0;           /* Vertical padding */
+    background-color: #2c2c2c;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
+
+footer p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* ===================================
+   WHATSAPP FLOATING BUTTON
+   =================================== */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background-color: #20BA5A;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float svg {
+    width: 32px;
+    height: 32px;
 }
 
 /* ===================================
    RESPONSIVE DESIGN
-   Media query for tablets and mobile devices
    =================================== */
 
-/* Applies styles when screen width is 768px or less (tablets and phones) */
-@media (max-width: 768px) {
-    /* Initially hides navigation links on mobile (can be toggled with menu button) */
-    .nav-links {
+@media (max-width: 980px) {
+    /* Show mobile menu toggle */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    /* Hide desktop navigation */
+    .desktop-nav {
         display: none;
     }
 
-    /* Reduces hero heading size for smaller screens */
-    .hero h1 {
-        font-size: 2rem;    /* Smaller than desktop (3rem) */
-    }
-
-    /* Reduces hero paragraph size for smaller screens */
-    .hero p {
-        font-size: 1rem;    /* Smaller than desktop (1.2rem) */
-    }
-
-    /* Reduces section heading size for smaller screens */
-    h2 {
-        font-size: 2rem;    /* Smaller than desktop (2.5rem) */
-    }
-
-    /* Changes navigation to vertical layout on mobile */
-    nav {
-        flex-direction: column;    /* Stacks items vertically */
-        text-align: center;        /* Centers content */
-    }
-
-    /* Adds space below logo when stacked vertically */
+    /* Center logo on mobile */
     .logo {
-        margin-bottom: 15px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    /* Shows navigation links in wrapped horizontal layout */
+    #main-header .container {
+        padding: 0 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .two-column,
+    .three-column,
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .process-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .column h2 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .process-content {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
     .nav-links {
-        display: flex;              /* Enables flexbox */
-        flex-wrap: wrap;            /* Allows items to wrap to next line */
-        justify-content: center;    /* Centers items */
+        width: 100%;
+        right: -100%;
     }
 
-    /* Adjusts spacing between navigation items on mobile */
-    .nav-links li {
-        margin: 5px 20px;    /* Smaller vertical margin than desktop */
+    .nav-links.active {
+        right: 0;
     }
 }
