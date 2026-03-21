@@ -241,7 +241,7 @@ main {
 }
 
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero-bg.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/pricing-hero.webp') no-repeat center center/cover;
     min-height: 600px;
     display: flex;
     align-items: center;
@@ -420,23 +420,8 @@ h3 {
 }
 
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 60px;
-    margin-top: 20px;
-}
-
-.contact-info h3,
-.contact-form h3 {
-    color: #333;
-    margin-bottom: 25px;
-    font-size: 1.3rem;
-}
-
-.contact-info p {
-    margin-bottom: 20px;
-    line-height: 1.8;
-    color: #666;
+    max-width: 600px;
+    margin: 20px auto 0;
 }
 
 .contact-form form {
@@ -483,6 +468,39 @@ footer {
 footer p {
     font-size: 14px;
     opacity: 0.8;
+}
+
+/* ===================================
+   WHATSAPP FLOATING BUTTON
+   =================================== */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background-color: #20BA5A;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float svg {
+    width: 32px;
+    height: 32px;
 }
 
 /* ===================================
