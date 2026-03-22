@@ -343,6 +343,20 @@ h3 {
     color: #999;
 }
 
+.showroom-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+}
+
+.showroom-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
 /* ===================================
    SERVICES SECTION - THREE COLUMN GRID
    =================================== */
